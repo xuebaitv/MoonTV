@@ -19,6 +19,9 @@ import {
   Ghost,
   Video,
   Music,
+  Lantern,
+  Smile,
+  Clock,
   Mountain
 } from 'lucide-react';
 import Link from 'next/link';
@@ -150,11 +153,11 @@ const Sidebar = ({ onToggle, activePath = '/' }: SidebarProps) => {
   // 电影分类（不包含Top500）- 优化图标匹配
   const movieCategories = [
     { icon: Film, label: '热门电影', href: '/douban?type=movie&tag=热门&title=热门电影' },
-    { icon: Film, label: '经典电影', href: '/douban?type=movie&tag=经典&title=经典电影' },
+    { icon: Clock, label: '经典电影', href: '/douban?type=movie&tag=经典&title=经典电影' },
     { icon: Globe, label: '欧美电影', href: '/douban?type=movie&tag=欧美&title=欧美电影' }, // 更贴合的地球图标
     { icon: MessageCircleHeart, label: '日韩电影', href: '/douban?type=movie&tag=日韩&title=日韩电影' },
     { icon: Swords, label: '动作电影', href: '/douban?type=movie&tag=动作&title=动作电影' },
-    { icon: Film, label: '喜剧电影', href: '/douban?type=movie&tag=喜剧&title=喜剧电影' },
+    { icon: Smile, label: '喜剧电影', href: '/douban?type=movie&tag=喜剧&title=喜剧电影' },
     { icon: Heart, label: '爱情电影', href: '/douban?type=movie&tag=爱情&title=爱情电影' }, // 更贴合的爱心图标
     { icon: Rocket, label: '科幻电影', href: '/douban?type=movie&tag=科幻&title=科幻电影' }, // 更贴合的火箭图标
     { icon: Ghost, label: '恐怖电影', href: '/douban?type=movie&tag=恐怖&title=恐怖电影' }, // 更贴合的幽灵图标
@@ -170,7 +173,7 @@ const Sidebar = ({ onToggle, activePath = '/' }: SidebarProps) => {
     { icon: Heart, label: '韩剧', href: '/douban?type=tv&tag=韩剧' }, // 更贴合的爱心图标
     { icon: Mountain, label: '日剧', href: '/douban?type=tv&tag=日剧' }, // 更贴合的山图标
     { icon: VenetianMask, label: '日漫', href: '/douban?type=tv&tag=日本动画' },
-    { icon: Tv, label: '国产剧', href: '/douban?type=tv&tag=国产剧&title=国产剧' },
+    { icon: Lantern, label: '国产剧', href: '/douban?type=tv&tag=国产剧&title=国产剧' },
   ];
 
 
