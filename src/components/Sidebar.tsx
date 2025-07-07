@@ -360,6 +360,52 @@ const Sidebar = ({ onToggle, activePath = '/' }: SidebarProps) => {
 
               {!isCollapsed && (
                 <div className="px-4 mb-2 text-xs font-semibold text-gray-500 uppercase tracking-wider dark:text-gray-400">
+                  成人分类
+                </div>
+              )}
+              <div className='space-y-1 mb-4'>
+                {adult.map((item) => {
+                  // 检查当前路径是否匹配这个菜单项
+                  const typeMatch = item.href.match(/type=([^&]+)/)?.[1];
+                  const tagMatch = item.href.match(/tag=([^&]+)/)?.[1];
+
+                  // 解码URL以进行正确的比较
+                  const decodedActive = decodeURIComponent(active);
+                  const decodedItemHref = decodeURIComponent(item.href);
+
+                  const isActive =
+                    decodedActive === decodedItemHref ||
+                    (decodedActive.startsWith('/douban') &&
+                      decodedActive.includes(`type=${typeMatch}`) &&
+                      tagMatch &&
+                      decodedActive.includes(`tag=${tagMatch}`));
+                  const Icon = item.icon;
+                  return (
+                    <Link
+                      key={item.label}
+                      href={item.href}
+                      onClick={() => setActive(item.href)}
+                      data-active={isActive}
+                      className={`group flex items-center rounded-lg px-2 py-2 pl-4 text-sm text-gray-700 hover:bg-gray-100/30 hover:text-green-600 data-[active=true]:bg-green-500/20 data-[active=true]:text-green-700 transition-colors duration-200 min-h-[40px] dark:text-gray-300 dark:hover:text-green-400 dark:data-[active=true]:bg-green-500/10 dark:data-[active=true]:text-green-400 ${
+                        isCollapsed ? 'w-full max-w-none mx-0' : 'mx-0'
+                      } gap-3 justify-start`}
+                    >
+                      <div className='w-4 h-4 flex items-center justify-center'>
+                        <Icon className='h-4 w-4 text-gray-500 group-hover:text-green-600 data-[active=true]:text-green-700 dark:text-gray-400 dark:group-hover:text-green-400 dark:data-[active=true]:text-green-400' />
+                      </div>
+                      {!isCollapsed && (
+                        <span className='whitespace-nowrap transition-opacity duration-200 opacity-100'>
+                          {item.label}
+                        </span>
+                      )}
+                    </Link>
+                  );
+                })}
+              </div>
+
+              
+              {!isCollapsed && (
+                <div className="px-4 mb-2 text-xs font-semibold text-gray-500 uppercase tracking-wider dark:text-gray-400">
                   剧集分类
                 </div>
               )}
