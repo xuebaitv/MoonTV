@@ -168,16 +168,6 @@ const Sidebar = ({ onToggle, activePath = '/' }: SidebarProps) => {
 
   // 组合所有分类
   const menuItems = [...doubanTop500, ...movieCategories, ...tvCategories];
-
-  const { siteName } = useSite();
-  if (siteName !== 'MoonTV') {
-    menuItems.push({
-      icon: Github,
-      label: 'MoonTV',
-      href: 'https://github.com/senshinya/MoonTV',
-    });
-  }
-
   return (
     <SidebarContext.Provider value={contextValue}>
       {/* 在移动端隐藏侧边栏 */}
