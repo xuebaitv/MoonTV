@@ -135,36 +135,36 @@ const Sidebar = ({ onToggle, activePath = '/' }: SidebarProps) => {
     isCollapsed,
   };
 
-  const menuItems = [
-    {
-      icon: Film,
-      label: '热门电影',
-      href: '/douban?type=movie&tag=热门&title=热门电影',
-    },
-    {
-      icon: Tv,
-      label: '热门剧集',
-      href: '/douban?type=tv&tag=热门&title=热门剧集',
-    },
-    {
-      icon: Star,
-      label: '豆瓣 Top250',
-      href: '/douban?type=movie&tag=top250&title=豆瓣 Top250',
-    },
-    {
-      icon: Clover,
-      label: '综艺',
-      href: '/douban?type=tv&tag=综艺&title=综艺',
-    },
+  // 电影分类
+  const movieCategories = [
+    { icon: Star, label: '豆瓣 Top250', href: '/douban?type=movie&tag=top250&title=豆瓣 Top250' },
+    { icon: Film, label: '热门电影', href: '/douban?type=movie&tag=热门&title=热门电影' },
+    { icon: Film, label: '经典电影', href: '/douban?type=movie&tag=经典&title=经典电影' },
+    { icon: Swords, label: '欧美电影', href: '/douban?type=movie&tag=欧美&title=欧美电影' },
+    { icon: MessageCircleHeart, label: '日韩电影', href: '/douban?type=movie&tag=日韩&title=日韩电影' },
+    { icon: Swords, label: '动作电影', href: '/douban?type=movie&tag=动作&title=动作电影' },
+    { icon: Film, label: '喜剧电影', href: '/douban?type=movie&tag=喜剧&title=喜剧电影' },
+    { icon: Film, label: '爱情电影', href: '/douban?type=movie&tag=爱情&title=爱情电影' },
+    { icon: Film, label: '科幻电影', href: '/douban?type=movie&tag=科幻&title=科幻电影' },
+    { icon: Film, label: '恐怖电影', href: '/douban?type=movie&tag=恐怖&title=恐怖电影' },
+    { icon: VenetianMask, label: '动画片', href: '/douban?type=movie&tag=动画&title=动画片' },
+    { icon: Film, label: '纪录片', href: '/douban?type=movie&tag=纪录片&title=纪录片' },
+  ];
+
+  // 剧集分类
+  const tvCategories = [
+    { icon: Tv, label: '热门剧集', href: '/douban?type=tv&tag=热门&title=热门剧集' },
+    { icon: Clover, label: '综艺', href: '/douban?type=tv&tag=综艺&title=综艺' },
     { icon: Swords, label: '美剧', href: '/douban?type=tv&tag=美剧' },
-    {
-      icon: MessageCircleHeart,
-      label: '韩剧',
-      href: '/douban?type=tv&tag=韩剧',
-    },
+    { icon: MessageCircleHeart, label: '韩剧', href: '/douban?type=tv&tag=韩剧' },
     { icon: MountainSnow, label: '日剧', href: '/douban?type=tv&tag=日剧' },
     { icon: VenetianMask, label: '日漫', href: '/douban?type=tv&tag=日本动画' },
+    { icon: Tv, label: '国产剧', href: '/douban?type=tv&tag=国产剧&title=国产剧' },
+    { icon: VenetianMask, label: '动漫', href: '/douban?type=tv&tag=动漫&title=动漫' },
   ];
+
+  // 组合所有分类
+  const menuItems = [...movieCategories, ...tvCategories];
 
   const { siteName } = useSite();
   if (siteName !== 'MoonTV') {
@@ -253,10 +253,15 @@ const Sidebar = ({ onToggle, activePath = '/' }: SidebarProps) => {
               </Link>
             </nav>
 
-            {/* 菜单项 */}
+            {/* 菜单项 - 带分类标题 */}
             <div className='flex-1 overflow-y-auto px-2 pt-4'>
-              <div className='space-y-1'>
-                {menuItems.map((item) => {
+              {!isCollapsed && (
+                <div className="px-4 mb-2 text-xs font-semibold text-gray-500 uppercase tracking-wider dark:text-gray-400">
+                  电影分类
+                </div>
+              )}
+              <div className='space-y-1 mb-4'>
+                {movieCategories.map((item) => {
                   // 检查当前路径是否匹配这个菜单项
                   const typeMatch = item.href.match(/type=([^&]+)/)?.[1];
                   const tagMatch = item.href.match(/tag=([^&]+)/)?.[1];
@@ -294,6 +299,75 @@ const Sidebar = ({ onToggle, activePath = '/' }: SidebarProps) => {
                   );
                 })}
               </div>
+
+              {!isCollapsed && (
+                <div className="px-4 mb-2 text-xs font-semibold text-gray-500 uppercase tracking-wider dark:text-gray-400">
+                  剧集分类
+                </div>
+              )}
+              <div className='space-y-1'>
+                {tvCategories.map((item) => {
+                  // 检查当前路径是否匹配这个菜单项
+                  const typeMatch = item.href.match(/type=([^&]+)/)?.[1];
+                  const tagMatch = item.href.match(/tag=([^&]+)/)?.[1];
+
+                  // 解码URL以进行正确的比较
+                  const decodedActive = decodeURIComponent(active);
+                  const decodedItemHref = decodeURIComponent(item.href);
+
+                  const isActive =
+                    decodedActive === decodedItemHref ||
+                    (decodedActive.startsWith('/douban') &&
+                      decodedActive.includes(`type=${typeMatch}`) &&
+                      tagMatch &&
+                      decodedActive.includes(`tag=${tagMatch}`));
+                  const Icon = item.icon;
+                  return (
+                    <Link
+                      key={item.label}
+                      href={item.href}
+                      onClick={() => setActive(item.href)}
+                      data-active={isActive}
+                      className={`group flex items-center rounded-lg px-2 py-2 pl-4 text-sm text-gray-700 hover:bg-gray-100/30 hover:text-green-600 data-[active=true]:bg-green-500/20 data-[active=true]:text-green-700 transition-colors duration-200 min-h-[40px] dark:text-gray-300 dark:hover:text-green-400 dark:data-[active=true]:bg-green-500/10 dark:data-[active=true]:text-green-400 ${
+                        isCollapsed ? 'w-full max-w-none mx-0' : 'mx-0'
+                      } gap-3 justify-start`}
+                    >
+                      <div className='w-4 h-4 flex items-center justify-center'>
+                        <Icon className='h-4 w-4 text-gray-500 group-hover:text-green-600 data-[active=true]:text-green-700 dark:text-gray-400 dark:group-hover:text-green-400 dark:data-[active=true]:text-green-400' />
+                      </div>
+                      {!isCollapsed && (
+                        <span className='whitespace-nowrap transition-opacity duration-200 opacity-100'>
+                          {item.label}
+                        </span>
+                      )}
+                    </Link>
+                  );
+                })}
+              </div>
+
+              {/* Github 链接 */}
+              {siteName !== 'MoonTV' && (
+                <div className='space-y-1 mt-4'>
+                  <Link
+                    key="github-link"
+                    href="https://github.com/senshinya/MoonTV"
+                    onClick={() => setActive("https://github.com/senshinya/MoonTV")}
+                    data-active={active === "https://github.com/senshinya/MoonTV"}
+                    className={`group flex items-center rounded-lg px-2 py-2 pl-4 text-sm text-gray-700 hover:bg-gray-100/30 hover:text-green-600 data-[active=true]:bg-green-500/20 data-[active=true]:text-green-700 transition-colors duration-200 min-h-[40px] dark:text-gray-300 dark:hover:text-green-400 dark:data-[active=true]:bg-green-500/10 dark:data-[active=true]:text-green-400 ${
+                      isCollapsed ? 'w-full max-w-none mx-0' : 'mx-0'
+                    } gap-3 justify-start`}
+                  >
+                    <div className='w-4 h-4 flex items-center justify-center'>
+                      <Github className='h-4 w-4 text-gray-500 group-hover:text-green-600 data-[active=true]:text-green-700 dark:text-gray-400 dark:group-hover:text-green-400 dark:data-[active=true]:text-green-400' />
+                    </div>
+                    {!isCollapsed && (
+                      <span className='whitespace-nowrap transition-opacity duration-200 opacity-100'>
+                        MoonTV
+                      </span>
+                    )}
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
         </aside>
