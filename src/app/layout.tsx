@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     title: config.SiteConfig.SiteName,
-    description: '影视聚合',
+    description: '影视聚合，免费在线影视，高清无广告，极速加载无缓冲，多线程全网在线搜索，内置超多影视源，无需注册，点开即用，可安装为PWA应用快速打开，更新最快最省心',
     manifest: '/manifest.json',
   };
 }
