@@ -164,7 +164,6 @@ const Sidebar = ({ onToggle, activePath = '/' }: SidebarProps) => {
     { icon: MountainSnow, label: '日剧', href: '/douban?type=tv&tag=日剧' },
     { icon: VenetianMask, label: '日漫', href: '/douban?type=tv&tag=日本动画' },
     { icon: Tv, label: '国产剧', href: '/douban?type=tv&tag=国产剧&title=国产剧' },
-    { icon: VenetianMask, label: '动漫', href: '/douban?type=tv&tag=动漫&title=动漫' },
   ];
 
   // 组合所有分类
