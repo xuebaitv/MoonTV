@@ -19,7 +19,7 @@ import {
   Ghost,
   Video,
   Music,
-  Lantern,
+  Brush,
   Smile,
   Clock,
   Mountain
@@ -173,7 +173,7 @@ const Sidebar = ({ onToggle, activePath = '/' }: SidebarProps) => {
     { icon: Heart, label: '韩剧', href: '/douban?type=tv&tag=韩剧' }, // 更贴合的爱心图标
     { icon: Mountain, label: '日剧', href: '/douban?type=tv&tag=日剧' }, // 更贴合的山图标
     { icon: VenetianMask, label: '日漫', href: '/douban?type=tv&tag=日本动画' },
-    { icon: Lantern, label: '国产剧', href: '/douban?type=tv&tag=国产剧&title=国产剧' },
+    { icon: Brush, label: '国产剧', href: '/douban?type=tv&tag=国产剧&title=国产剧' },
   ];
 
 
