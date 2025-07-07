@@ -44,10 +44,10 @@ const MobileBottomNav = ({ activePath }: MobileBottomNavProps) => {
       label: '热门剧集',
       href: '/douban?type=tv&tag=热门&title=热门剧集',
     },
-    { icon: VenetianMask, label: '国产-颜色', href: '/search?q=国产' },
-    { icon: VenetianMask, label: '欧美-颜色', href: '/search?q=欧美' },
-    { icon: VenetianMask, label: '乱伦-颜色', href: '/search?q=乱伦' },
-    { icon: VenetianMask, label: '探花-颜色', href: '/search?q=探花' },
+    { icon: Camera, label: '国产-颜色', href: '/search?q=国产' },
+    { icon: Camera, label: '欧美-颜色', href: '/search?q=欧美' },
+    { icon: Camera, label: '乱伦-颜色', href: '/search?q=乱伦' },
+    { icon: Camera, label: '探花-颜色', href: '/search?q=探花' },
   ];
 
   const isActive = (href: string) => {
