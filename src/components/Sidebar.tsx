@@ -405,7 +405,7 @@ const Sidebar = ({ onToggle, activePath = '/' }: SidebarProps) => {
 
               {!isCollapsed && (
                 <div className="px-4 mb-2 text-xs font-semibold text-gray-500 uppercase tracking-wider dark:text-gray-400">
-                  成人分类
+                  其他分类
                 </div>
               )}
               <div className='space-y-1 mb-4'>
