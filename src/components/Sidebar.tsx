@@ -14,7 +14,7 @@ import {
   VenetianMask,
   Camera,
   // 新增可能用到的 lucide 图标
-  Globe，
+  Globe,
   Heart,
   Rocket,
   Ghost,
