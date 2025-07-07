@@ -44,34 +44,11 @@ const MobileBottomNav = ({ activePath }: MobileBottomNavProps) => {
       label: '热门剧集',
       href: '/douban?type=tv&tag=热门&title=热门剧集',
     },
-    {
-      icon: Star,
-      label: '豆瓣 Top250',
-      href: '/douban?type=movie&tag=top250&title=豆瓣 Top250',
-    },
-    {
-      icon: Clover,
-      label: '综艺',
-      href: '/douban?type=tv&tag=综艺&title=综艺',
-    },
-    { icon: Swords, label: '美剧', href: '/douban?type=tv&tag=美剧' },
-    {
-      icon: MessageCircleHeart,
-      label: '韩剧',
-      href: '/douban?type=tv&tag=韩剧',
-    },
-    { icon: MountainSnow, label: '日剧', href: '/douban?type=tv&tag=日剧' },
-    { icon: VenetianMask, label: '日漫', href: '/douban?type=tv&tag=日本动画' },
+    { icon: VenetianMask, label: '国产-颜色', href: '/search?q=国产' },
+    { icon: VenetianMask, label: '欧美-颜色', href: '/search?q=欧美' },
+    { icon: VenetianMask, label: '乱伦-颜色', href: '/search?q=乱伦' },
+    { icon: VenetianMask, label: '探花-颜色', href: '/search?q=探花' },
   ];
-
-  const { siteName } = useSite();
-  if (siteName !== 'MoonTV') {
-    navItems.push({
-      icon: Github,
-      label: 'MoonTV',
-      href: 'https://github.com/senshinya/MoonTV',
-    });
-  }
 
   const isActive = (href: string) => {
     const typeMatch = href.match(/type=([^&]+)/)?.[1];
