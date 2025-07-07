@@ -12,8 +12,9 @@ import {
   Swords,
   Tv,
   VenetianMask,
+  Camera,
   // 新增可能用到的 lucide 图标
-  Globe,
+  Globe，
   Heart,
   Rocket,
   Ghost,
@@ -176,9 +177,17 @@ const Sidebar = ({ onToggle, activePath = '/' }: SidebarProps) => {
     { icon: Brush, label: '国产剧', href: '/douban?type=tv&tag=国产剧&title=国产剧' },
   ];
 
+  // 剧集分类 - 优化图标匹配
+  const adult = [
+    { icon: Camera, label: '国产-颜色', href: '/search?q=国产' },
+    { icon: Camera, label: '欧美-颜色', href: '/search?q=欧美' },
+    { icon: Camera, label: '乱伦-颜色', href: '/search?q=乱伦' },
+    { icon: Camera, label: '探花-颜色', href: '/search?q=探花' },
+  ];
+
 
   // 组合所有分类
-  const menuItems = [...doubanTop500, ...movieCategories, ...tvCategories];
+  const menuItems = [...doubanTop500, ...movieCategories, ...tvCategories, ...adult];
   return (
     <SidebarContext.Provider value={contextValue}>
       {/* 在移动端隐藏侧边栏 */}
