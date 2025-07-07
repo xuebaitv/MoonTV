@@ -12,6 +12,7 @@ import {
   Swords,
   Tv,
   VenetianMask,
+  Camera,
 } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
