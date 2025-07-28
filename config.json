@@ -103,8 +103,7 @@
     },
     "huangcang": {
       "api": "https://hsckzy.vip/api.php/provide/vod",
-      "name": "黄色仓库",
-      "detail": "https://hsckzy.vip"
+      "name": "黄色仓库"
     },
     "yutu1": {
       "api": "https://yutuzy10.com/api.php/provide/vod",
@@ -117,6 +116,18 @@
     "yutu2": {
       "api": "https://api.bwzym3u8.com/api.php/provide/vod",
       "name": "百万资源"
-    }
+    },
+    "fanhao": {
+         "api": "http://fhapi9.com/api.php/provide/vod/"，
+         "name": "番号资源"
+     },
+    "leboyo":  {
+        "api": "https://lbapi9.com/api.php/provide/vod/"，
+        "name": "乐播资源"
+     },
+    "dd1": {
+        "api": "https://api.ddapi.cc/api.php/provide/vod/"，
+        "name": "滴滴资源"
+  },
   }
 }
